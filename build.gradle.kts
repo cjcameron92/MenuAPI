@@ -23,3 +23,20 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("jitpack") {
+            from(components["java"])
+
+            groupId = "com.github.cjcmaoner92"  // Replace with your GitHub username
+            artifactId = "MenuApi"   // Replace with your GitHub repository name
+            version = "1.0-SNAPSHOT"           // Replace with the desired version or branch
+        }
+    }
+    repositories {
+        maven {
+            url = uri("https://jitpack.io")
+        }
+    }
+}
