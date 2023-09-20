@@ -1,42 +1,56 @@
-## Minecraft GUI Library
+# Minecraft GUI Library
+[![](https://jitpack.io/v/cjcameron92/MenuApi.svg)](https://jitpack.io/#cjcameron92/MenuApi)
 
-Implementation
+## Introduction
 
+The Minecraft GUI Library is a powerful tool for creating graphical user interfaces (GUIs) in Minecraft plugins. Whether you're a seasoned developer or just starting with plugin development, this library provides you with the means to create professional-grade UIs for your Minecraft server.
 
-Gradle
+## Getting Started
 
-Repository
+### Gradle
+
+To include the Minecraft GUI Library in your Gradle-based project, add the following repository and dependency to your `build.gradle.kts` file:
 
 ```kts
-maven("https://jitpack.com")
+repositories {
+    maven("https://jitpack.com")
+}
+
+dependencies {
+    implementation("com.cjcameron92:menu:${VERSION}")
+}
 ```
 
-Dependency
-```kts
-implementation("com.cjcameron92:menu:${VERSION}"
-```
+### Maven
 
-Maven
-
-Repository
+For Maven-based projects, add the following repository and dependency to your pom.xml:
 ```xml
-<repository>
-    <url>https://jitpack.com</url>
-</repository>
-```
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
 
-Dependency
-```xml
 <dependency>
-    <groupId>com.cjcameron92</groupId>
-    <artifactId>menu</artifactId>
-    <version>LATEST</version>
-    <scope>provided</scope>
+    <groupId>com.github.cjcameron92</groupId>
+    <artifactId>MenuApi</artifactId>
+    <version>Tag</version>
 </dependency>
 ```
 
-## Functional
+Replace `${VERSION}` with the desired version of the library.
+
+## Functional Usage
+
+The Minecraft GUI Library allows you to create functional GUIs with ease. Here's an example of how to use it in your code:
+
 ```java
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJumpEvent;
+
 public class JumpListener implements Listener {
 
     private final Plugin plugin;
@@ -53,7 +67,7 @@ public class JumpListener implements Listener {
                 .add('@', new ItemStack(Material.CACTUS, 1))
                 .register(event.getPlayer(), "<gray>Title", plugin);
 
-        // open menu
+        // Open the menu
         menu.fire();
     }
 
@@ -64,15 +78,21 @@ public class JumpListener implements Listener {
                 .add(5, new ItemStack(Material.CACTUS))
                 .register(event.getPlayer(), "<gray>Title", plugin);
 
-        // open menu
+        // Open the menu
         menu.fire();
     }
 
 }
 ```
 
-## Non-Functional 
+## Non-Functional Usage
+
+The library also supports non-functional GUIs. Here's an example:
+
 ```java
+import org.bukkit.Material;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+
 public class JumpMenu extends Menu {
 
     public JumpMenu(Plugin plugin, Player player) {
@@ -85,7 +105,9 @@ public class JumpMenu extends Menu {
     }
 }
 
-
+// Create and open the menu
 final Menu menu = new JumpMenu(plugin, player);
 menu.fire();
 ```
+
+
