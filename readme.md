@@ -35,7 +35,7 @@ For Maven-based projects, add the following repository and dependency to your po
 <dependency>
     <groupId>com.github.cjcameron92</groupId>
     <artifactId>MenuApi</artifactId>
-    <version>Tag</version>
+    <version>${VERSION}</version>
 </dependency>
 ```
 
